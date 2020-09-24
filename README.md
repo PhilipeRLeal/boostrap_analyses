@@ -12,7 +12,7 @@
 			
 ## Author:
 
-	__author__ = Philipe Riskalla Leal
+	Philipe Riskalla Leal
 	
 	
 ## License
