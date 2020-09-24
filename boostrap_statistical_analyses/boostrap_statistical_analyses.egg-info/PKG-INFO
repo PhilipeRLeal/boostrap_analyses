@@ -1,0 +1,25 @@
+Metadata-Version: 1.2
+Name: boostrap-statistical-analyses
+Version: 0.1
+Summary: This is a python package for statistical analyses using bootstrap approach
+Home-page: https://github.com/PhilipeRLeal/fancy_spatial_geometries_plot
+Author: Philipe Riskalla Leal
+Author-email: leal.philipe@gmail.com
+Maintainer: Philipe Riskalla leal: developer
+Maintainer-email: leal.philipe@gmail.com
+License: MIT license
+Download-URL: TODO
+Description: This is a package for boostrap analyses.
+Keywords: boostrap,statistics,probability
+Platform: UNKNOWN
+Classifier: Topic :: Education
+Classifier: Topic :: Scientific/Engineering
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Requires-Python: >=3.0
