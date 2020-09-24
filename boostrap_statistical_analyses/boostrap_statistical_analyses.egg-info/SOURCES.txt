@@ -1,9 +1,0 @@
-MANIFEST.in
-README.md
-setup.py
-boostrap_statistical_analyses/boostrap_statistical_analyses.egg-info/PKG-INFO
-boostrap_statistical_analyses/boostrap_statistical_analyses.egg-info/SOURCES.txt
-boostrap_statistical_analyses/boostrap_statistical_analyses.egg-info/dependency_links.txt
-boostrap_statistical_analyses/boostrap_statistical_analyses.egg-info/not-zip-safe
-boostrap_statistical_analyses/boostrap_statistical_analyses.egg-info/requires.txt
-boostrap_statistical_analyses/boostrap_statistical_analyses.egg-info/top_level.txt

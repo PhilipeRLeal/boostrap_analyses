@@ -1,12 +1,12 @@
 
 import numpy as np
-from permutation import draw_perm_reps
+from bootstrap_analyses.boostrap_statistical_analyses.one_sample.submodules.permutation import draw_perm_reps
 
 def diff_between_series(series1, series2, reducer=np.mean):
     
     return reducer(series1) - reducer(series2)
 
-def frac_of_cases(series1):
+def frac_of_cases(series1, series2=None):
     """
     Description:
         
@@ -67,7 +67,7 @@ if '__main__' == __name__:
         A True represents someone that did click on your ad 
         A False represents someone that did not click on your ad 
         
-    ''')
+         ''')
     
     
     prior = np.array([True] * 153 + [False] * 91)
@@ -120,15 +120,7 @@ if '__main__' == __name__:
     
     for reducer in reducers:
         
-    results = eval_permutation_pvalue(prior, after, reducer=diff_frac)
+        results = eval_permutation_pvalue(prior, after, reducer=diff_frac)
     
-    print('p-value =', results['p_value'])
-        results = eval_permutation_pvalue(series1, 
-                                         series2, 
-                                         reducer=lambda x, y: diff_between_series(x, 
-                                                                               y, 
-                                                                               reducer)
-                                        )
-        
         print(reducer.__name__, 'pvalue: {0:.3f}'.format( results['p_value']))
-                           
+        

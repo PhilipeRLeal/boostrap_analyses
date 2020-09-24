@@ -7,11 +7,7 @@ Created on Thu Mar 26 17:23:54 2020
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import os, sys
-import geopandas as gpd
-import cartopy.crs as ccrs
-from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
-import matplotlib.ticker as mticker
+import os 
 
 path = os.path.join(os.getcwd(), 'Data_example.csv')
 df = pd.read_csv(path, sep=',', decimal='.', encoding='latin')

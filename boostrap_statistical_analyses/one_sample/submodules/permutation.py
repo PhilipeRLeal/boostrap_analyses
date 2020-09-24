@@ -65,8 +65,10 @@ def eval_permutation_p_value(samples_A, samples_B, reducer=diff_of_means, size=1
                                      reducer, size=size)
 
     # Compute p-value:
-        # the p_value is the sum of all positive cases divided by the number of samples
-        # the positive cases are those whose perm_replicate value is equal or higher (more extreme) than the observed value.
+        # the p_value is the sum of all positive cases divided by the 
+        #number of samples
+        # the positive cases are those whose perm_replicate value is equal 
+        #or higher (more extreme) than the observed value.
     
     
     if condition.lower() == 'gt':
@@ -85,18 +87,22 @@ def eval_permutation_p_value(samples_A, samples_B, reducer=diff_of_means, size=1
         p_value = np.sum(Conditional)/len(perm_replicates)
 
     
-    return {'p_value':p_value, 'perm_replicates':perm_replicates,'empirical_diff_means':empirical_diff_means}
+    return {'p_value':p_value, 
+            'perm_replicates':perm_replicates,
+            'empirical_diff_means':empirical_diff_means}
 
     
 if '__main__' == __name__:
     """
     Description:
     
-        Assuming that we wish to evaluate the probability that two populations have same statistics (i.e.: mean).
+        Assuming that we wish to evaluate the probability that two 
+        populations have same statistics (i.e.: mean).
         
         A possible solution for this hypothesis test is the t-statistics. 
         
-        Another solution is the permutation replicate technique using a mean difference as a reducer function.
+        Another solution is the permutation replicate technique using a 
+        mean difference as a reducer function.
     
     
     Case example:
@@ -104,21 +110,34 @@ if '__main__' == __name__:
         samples_B: samples from population B (i.e.: petal length with treatment)
         
         
-        Reducer: diff_of_means. It evaluates the difference between Population Means
+        Reducer: diff_of_means. It evaluates the difference between 
+        Population Means
     
     
         H0: Population means are the same
         Ha: Population means are not equal
     
     Result: 
-        p_value (reprents the probability of retrieving a value more extreme than the observed, assuming that hypothesis null is True.
+        p_value (reprents the probability of retrieving a value more extreme
+                 than the observed, assuming that hypothesis null is True.
         
-        When we assume alpha == 0.05, if p_value < alpha, we reject H0, and accept the alternative (Ha).
+        When we assume alpha == 0.05, if p_value < alpha, we reject H0,
+        and accept the alternative (Ha).
         
         
     """
     
     
+    print('''Case example:
+        samples_A: samples from population A (i.e.: petal length without treatment)
+        samples_B: samples from population B (i.e.: petal length with treatment) 
+        
+        '''
+        )
+    
+    samples_A = np.random.normal(4, 5, size=500)
+    
+    samples_B = np.random.normal(3.7, 7.5, size=500)
 
     # Compute difference of mean impact force from experiment: empirical_diff_means
     empirical_diff_means = diff_of_means(samples_A, samples_B)
@@ -143,23 +162,49 @@ if '__main__' == __name__:
     """
     Description:
     
-        Assume that a given population A (democrats - dems) have a certain tendency towards voting in favor (boolean False X True) for a given Legislation, and population B (republicans - reps) have a second tendency.
+        Assume that a given population A (democrats - dems) have a 
+        certain tendency towards voting in favor (boolean False X True) 
+        for a given Legislation, and population B (republicans - reps) 
+        have a second tendency.
 
 
-        We wish to evaluate the probability that the populations have equal tendency in the voting.
+        We wish to evaluate the probability that the populations have equal 
+        tendency in the voting.
         
         
     Conditions:
     
-        Since it is a Bernoulli situation, the differences in population does no longer apply for this test.
+        Since it is a Bernoulli situation, the differences in population 
+        does no longer apply for this test.
         
-        It is necessary to evaluate the respective frequencies of voting per group:
+        It is necessary to evaluate the respective frequencies of voting 
+        per group:
     
         
         
         
     """
+    print('''
+          \n\n 
+          
+          ---------------------------------------------------
+          
+          Description:
     
+        Assume that a given population A (democrats - dems) have a 
+        certain tendency towards voting in favor (boolean False X True) 
+        for a given Legislation, and population B (republicans - reps) 
+        have a second tendency.
+
+
+        We wish to evaluate the probability that the populations 
+        have equal tendency in the voting.
+        
+        
+        \n\n
+        
+        ------------------------------------ \n'''
+        )
         
     # Construct arrays of data: dems, reps
     dems = np.array([True] * 153 + [False] * 91)
@@ -174,37 +219,75 @@ if '__main__' == __name__:
 
     # Acquire permutation samples: perm_replicates
     perm_replicates = draw_perm_reps(dems, reps, frac_yea_dems, 10000)
-
+    real_fraction = frac_yea_dems(dems)
     # Compute and print p-value: p
-    p = np.sum(perm_replicates <= dems[dems==True].size/dems.size) / len(perm_replicates)
+    p = np.sum(perm_replicates <= real_fraction) / len(perm_replicates)
     print('p-value =', p)
 
 if '__main__' == __name__:
     """
     Description:
     
-        population A: each sample from population A represents the amount of time (in accumulated months) that a given event reoccurs.
+        population A: each sample from population A represents the 
+        amount of time (in accumulated months) that a given event reoccurs.
         
-        After a given treatment, which could have changed the rates in the events of population A, a second sample set (Population B) was evaluated.
+        After a given treatment, which could have changed the rates 
+        in the events of population A, a second sample set (Population B)
+        was evaluated.
         
         
     Question:
-        Is there a significant statistical change prior and after the treatment?
+        Is there a significant statistical change prior and after the 
+        treatment?
         
-        In another words: what is the probability that the treatment causes a negative change in the event occurence given that the null hypothesis is true 
+        In another words: what is the probability that the treatment 
+        causes a negative change in the event occurence given that the null hypothesis is true 
 
     
     
     
     Condition: 
-        since the treatment changed the rates in the events in a negative way (i.e., longer average time between event occurrence), we are interested in the "<=" condition for p-value test statistics
+        since the treatment changed the rates in the events in a negative 
+        way (i.e., longer average time between event occurrence), we are interested in the "<=" condition for p-value test statistics
         
         
     
     Hypothesis:
-        H0: treatment does not change the rates in the events occurence. In another words, rates of Population A are equal to Population B:
+        H0: treatment does not change the rates in the events occurence. 
+        In another words, rates of Population A are equal to Population B:
         Ha: the treatment does change the rates
     """
+    
+    
+    print('''
+          \n\n 
+          
+          Description:
+    
+        population A: each sample from population A represents the 
+        amount of time (in accumulated months) that a given event reoccurs.
+        
+        After a given treatment, which could have changed the rates in 
+        the events of population A, a second sample set (Population B) 
+        was evaluated.
+        
+        
+    Question:
+        Is there a significant statistical change prior and after the treatment?
+        
+        In another words: what is the probability that the treatment 
+        causes a negative change in the event occurence given that 
+        the null hypothesis is true 
+
+    
+    
+        \n\n
+        
+        ------------------------------------ \n'''
+        )
+    
+    
+    
     eval_permutation_p_value(samples_A, samples_B, reducer=diff_of_means, size=10000, condition='gt')
     
     
@@ -216,16 +299,20 @@ if '__main__' == __name__:
     
     Description:
     
-        In this example, the statistical confidence (p-value) of the correlation coefficient is evaluated.
+        In this example, the statistical confidence (p-value) of the 
+        correlation coefficient is evaluated.
         
         
     The condition evaluated is:
-        what is the probability of getting a correlation coefficient equal or higher than the observed? 
+        what is the probability of getting a correlation 
+        coefficient equal or higher than the observed? 
     
     """
     
-    
+    def pearson_r (x,y):
+        
+        return np.corrcoef(x,y)[0][1]
     
     Result = eval_permutation_p_value(samples_A, samples_B, reducer=pearson_r, size=10000, condition='gt')
     
-    print('p-val =', Result['p_value'])
+    print('p_value =', Result['p_value'])

@@ -79,10 +79,10 @@ setup(name='boostrap_statistical_analyses',
     
 	python_requires='>=3.0',  # Your supported Python ranges
     
-    packages=find_packages(include= '' #  'custom_plots'
+    packages=find_packages(#include= '' #  'custom_plots'
                           ),
 	
-    package_dir = {'': 'boostrap_statistical_analyses'},
+    package_dir = {'boostrap_statistical_analyses': ''},
     
     include_package_data=True,
     package_data={'tests/Data_example': ['Data_example*']},

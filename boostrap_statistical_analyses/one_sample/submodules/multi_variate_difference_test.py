@@ -6,12 +6,6 @@ Created on Thu Mar 26 11:47:43 2020
 """
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import os, sys
-import geopandas as gpd
-import cartopy.crs as ccrs
-from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
-import matplotlib.ticker as mticker
 
 
 a = np.random.normal(size=10)

@@ -82,10 +82,10 @@ def one_sample_bootstrap_test(series_1, expectedmean, n_replicates=10000, alpha=
 
 
 if '__main__' == __name__:
-    A = np.random.normal(size=100) + 5
+    A = np.random.normal(2,15, size=1000) + 5
     
     
-    expectedmean = 1
+    expectedmean = 10
     
     p_value = one_sample_bootstrap_test(A, expectedmean)
     
