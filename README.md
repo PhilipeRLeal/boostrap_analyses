@@ -17,4 +17,11 @@
 	
 ## License
 	[MIT](https://choosealicense.com/licenses/mit/)	
+
+
+## Supporting
+
+Feel free to help develop the library.
+
+Check the current functions available and add additional analyses for the package.
 		
